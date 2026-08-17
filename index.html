@@ -19,6 +19,8 @@
   a:hover { color: #062a72; }
   :focus-visible { outline: 3px solid #ffc20e; outline-offset: 3px; border-radius: 6px; }
   ::selection { background: #ffc20e; color: #062a72; }
+  .quem-texto { padding-right: 300px !important; }
+  @media (max-width: 700px) { .quem-texto { padding-right: 24px !important; } }
 </style>
 </helmet>
 
@@ -86,7 +88,7 @@
 
   <section id="quem" data-screen-label="Quem é / Por que" style="position: relative; z-index: 1; background: #ffffff;">
     <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
-      <div style="position: relative; min-width: 0; padding: 60px 46px 60px 24px;">
+      <div class="quem-texto" style="position: relative; min-width: 0; padding: 60px 46px 60px 24px;">
         <h2 style="font-size: clamp(28px, 2.9vw, 40px); line-height: 1.02; font-weight: 900; text-transform: uppercase; color: #062a72; letter-spacing: -0.015em; margin: 0;">Quem é<br><span style="font-style: italic; color: #0b4ed6;">Flávio Ferrari</span></h2>
         <div style="width: 62px; height: 4px; background: #ffc20e; border-radius: 999px; margin: 18px 0 22px;"></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px; align-items: end;">
@@ -113,7 +115,7 @@
     </div>
   </section>
 
-  <section id="papel" data-screen-label="O que faz um deputado" style="background: #0b3fa8; padding: 56px 24px 62px;">
+  <section id="papel" data-screen-label="O que faz um deputado" style="position: relative; z-index: 20; background: #0b3fa8; padding: 56px 24px 62px;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <h2 style="text-align: center; font-size: clamp(24px, 2.5vw, 34px); line-height: 1.1; font-weight: 900; text-transform: uppercase; color: #ffffff; letter-spacing: -0.01em; margin: 0 0 44px;">O que faz um deputado federal?</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 26px;">
