@@ -21,6 +21,9 @@
   ::selection { background: #ffc20e; color: #062a72; }
   .quem-texto { padding-right: 300px !important; }
   @media (max-width: 700px) { .quem-texto { padding-right: 24px !important; } }
+  .bandeiras-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  @media (max-width: 900px) { .bandeiras-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .bandeiras-grid { grid-template-columns: 1fr; } }
 </style>
 </helmet>
 
@@ -163,7 +166,7 @@
   <section id="bandeiras" data-screen-label="10 bandeiras" style="background: #f2f5fa; padding: 58px 24px 66px;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <h2 style="text-align: center; font-size: clamp(24px, 2.5vw, 34px); line-height: 1.1; font-weight: 900; text-transform: uppercase; color: #062a72; letter-spacing: -0.01em; margin: 0 0 38px;">10 bandeiras para defender o Oeste</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(196px, 1fr)); gap: 18px;">
+      <div class="bandeiras-grid" style="display: grid; gap: 18px;">
 
         <div style="position: relative; background: #ffffff; border: 1px solid #e3eaf5; border-radius: 12px; padding: 26px 18px 22px; text-align: center;" style-hover="border-color: #ffc20e; box-shadow: 0 10px 26px rgba(6,42,114,0.14);">
           <span style="position: absolute; top: 12px; left: 12px; background: #ffc20e; color: #062a72; font-size: 12px; font-weight: 900; padding: 3px 9px; border-radius: 5px;">01</span>
