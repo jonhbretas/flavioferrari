@@ -39,24 +39,48 @@
     .nav-logo img { height: 46px; }
   }
   @media (max-width: 980px) {
-    .nav-links { order: 3; width: 100%; justify-content: center; gap: 14px 20px; padding-top: 4px; }
-    .nav-cta { margin-left: auto; }
+    .nav-wrap { padding: 8px 0 0 !important; gap: 10px !important; }
+    .nav-logo, .nav-cta { margin: 0 16px; }
+    .nav-links {
+      order: 3; width: 100%; flex-wrap: nowrap; overflow-x: auto; gap: 22px;
+      padding: 4px 16px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { white-space: nowrap; flex-shrink: 0; }
+    .nav-logo img { height: 40px; }
   }
   @media (max-width: 520px) {
     .nav-links a { font-size: 11.5px; letter-spacing: 0.05em; }
-    .nav-cta { font-size: 12px !important; padding: 11px 18px !important; }
+    .nav-cta { font-size: 11.5px !important; padding: 10px 16px !important; }
+    .nav-logo img { height: 36px; }
+    .nav-logo { padding: 5px 10px !important; }
   }
 
   /* Hero */
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1fr); gap: 20px; align-items: center; }
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 10px; }
-    .hero-texto { order: 1; padding-bottom: 24px !important; }
+  @media (max-width: 700px) { .hero-sec { padding-top: 28px !important; } }
+  /* Tablet: texto+marca lado a lado em cima, foto embaixo */
+  @media (max-width: 1000px) and (min-width: 701px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; gap: 16px 28px; align-items: end; }
+    .hero-texto { order: 1; padding-bottom: 0 !important; }
+    .hero-marca { order: 2; padding-bottom: 0 !important; }
+    .hero-foto-col { order: 3; grid-column: 1 / -1; }
+    .hero-foto { max-width: 300px !important; }
+    .hero-marca .hero-federacao { flex-direction: column; align-items: flex-end; gap: 2px !important; }
+  }
+  /* Mobile: coluna unica */
+  @media (max-width: 700px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 6px; }
+    .hero-texto { order: 1; padding-bottom: 18px !important; }
     .hero-texto p { margin-left: auto !important; margin-right: auto !important; }
     .hero-marca { order: 2; text-align: center !important; padding-bottom: 0 !important; }
-    .hero-marca .hero-federacao { justify-content: center !important; }
+    .hero-marca .hero-federacao { flex-direction: column; align-items: center !important; justify-content: center !important; gap: 2px !important; margin-top: 10px !important; }
+    .hero-marca .hero-federacao span:last-child { text-align: center; }
     .hero-foto-col { order: 3; }
-    .hero-foto { max-width: 340px; }
+    .hero-foto { max-width: 270px !important; }
+  }
+  @media (max-width: 420px) {
+    .hero-foto { max-width: 230px !important; }
   }
 
   /* Quem é / Por que */
@@ -101,14 +125,21 @@
     font-family: inherit; color: #ffffff; cursor: pointer;
   }
   .faca-acoes p { margin: 0 !important; }
+  /* Quebra de linha do label some abaixo de 1080px; o espaco fica */
+  .faca-acoes .quebra { display: block; }
+  /* Tablet e mobile: icone ao lado do texto, uma acao por linha */
   @media (max-width: 1080px) {
-    .faca-wrap { justify-content: flex-start !important; }
+    .faca-wrap { justify-content: center !important; gap: 22px 28px !important; }
+    .faca-acoes { grid-template-columns: 1fr; gap: 14px; width: 100%; }
+    .faca-acoes .quebra { display: inline; }
+    .faca-acoes > a, .faca-acoes > button {
+      flex-direction: row; align-items: center; justify-content: flex-start;
+      gap: 14px; text-align: left; width: 100%;
+    }
+    .faca-acoes p { font-size: 12.5px !important; white-space: nowrap; }
   }
   @media (max-width: 620px) {
-    .faca-acoes { grid-template-columns: 1fr; gap: 18px; }
-    .faca-acoes > a, .faca-acoes > button { flex-direction: row; align-items: center; gap: 14px; text-align: left; }
-    .faca-acoes br { display: none; }
-    .faca-wrap { justify-content: center !important; }
+    .faca-acoes p { white-space: normal; }
     .faca-zap { width: 100%; }
     .faca-zap button { width: 100%; justify-content: center; }
   }
@@ -120,25 +151,41 @@
   @media (max-width: 1240px) { .votacao-foto { right: 24px; } }
   @media (max-width: 1080px) { .votacao-foto img { height: 260px; } }
   @media (max-width: 900px) {
-    .votacao-foto { position: static; justify-content: center; width: 100%; margin-top: 8px; }
-    .votacao-foto img { height: 240px; }
+    .votacao-foto { position: static; justify-content: center; align-items: flex-end; width: 100%; margin-top: 8px; gap: 6px; }
+    .votacao-foto img { height: 230px; }
     .votacao-info { padding-bottom: 0 !important; }
+    .votacao-chips span { flex: 1 1 auto; justify-content: center; text-align: center; }
   }
-  @media (max-width: 520px) {
-    .votacao-foto p { font-size: 20px !important; margin-bottom: 22px !important; }
-    .votacao-foto img { height: 200px; }
+  @media (max-width: 620px) {
+    .votacao-foto { flex-direction: column; align-items: center; gap: 0; }
+    .votacao-foto p { text-align: center !important; font-size: 22px !important; margin: 0 0 10px !important; }
+    .votacao-foto img { height: 210px; }
+    .votacao-chips { gap: 10px !important; }
+    .votacao-chips span { padding: 12px 16px !important; }
   }
 
   /* Rodapé */
   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; align-items: center; }
   @media (max-width: 900px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 26px; align-items: start; } }
+
+  /* Respiro vertical menor no mobile */
+  @media (max-width: 700px) {
+    #papel { padding: 40px 0 44px !important; }
+    #bandeiras { padding: 40px 20px 46px !important; }
+    #apoie { padding: 40px 20px !important; }
+    #votacao { padding: 32px 20px 0 !important; }
+    section[data-screen-label="Faca federal"] { padding: 26px 20px !important; }
+    .quem-col-a { padding: 38px 20px 28px !important; }
+    .quem-col-b { padding: 28px 20px 38px !important; }
+    h2 { letter-spacing: -0.01em !important; }
+  }
 </style>
 </helmet>
 
 <div style="background: #ffffff; overflow: hidden;">
 
   <header style="position: sticky; top: 0; z-index: 50; background: #062a72; box-shadow: 0 2px 14px rgba(0,0,0,0.25);">
-    <nav style="max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <nav class="nav-wrap" style="max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
       <a href="#inicio" class="nav-logo" style="display: flex; align-items: center; flex-shrink: 0; background: #ffffff; border-radius: 12px; padding: 6px 14px;">
         <img src="img/logo-nova.png" alt="Flávio Ferrari — O Faca na Bota" style="width: auto; display: block;">
       </a>
@@ -154,7 +201,7 @@
     </nav>
   </header>
 
-  <section id="inicio" data-screen-label="Hero" style="position: relative; background: radial-gradient(75% 105% at 50% 42%, #2f8ff0 0%, #1160e0 32%, #0b3fa8 58%, #062a72 88%); padding: 44px 24px 0; overflow: hidden;">
+  <section id="inicio" class="hero-sec" data-screen-label="Hero" style="position: relative; background: radial-gradient(75% 105% at 50% 42%, #2f8ff0 0%, #1160e0 32%, #0b3fa8 58%, #062a72 88%); padding: 44px 24px 0; overflow: hidden;">
     <div style="position: absolute; inset: 0; background: radial-gradient(46% 62% at 50% 40%, rgba(126,196,255,0.55), rgba(126,196,255,0) 72%); pointer-events: none;"></div>
 
     <div class="hero-grid" style="position: relative; z-index: 1; max-width: 1280px; margin: 0 auto;">
@@ -395,15 +442,15 @@
         <div class="faca-acoes">
           <a href="#bandeiras" style-hover="opacity: 0.85;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; flex-shrink: 0; border-radius: 999px; border: 2px solid #ffc20e; color: #ffc20e;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21v-2a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
-            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Conheça as<br>propostas</p>
+            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Conheça as<span class="quebra"> </span>propostas</p>
           </a>
           <button type="button" onClick="{{ compartilhar }}" style-hover="opacity: 0.85;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; flex-shrink: 0; border-radius: 999px; border: 2px solid #ffc20e; color: #ffc20e;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4"></path><path d="m15.4 6.5-6.8 4"></path></svg></span>
-            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Compartilhe<br>com a família</p>
+            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Compartilhe<span class="quebra"> </span>com a família</p>
           </button>
           <button type="button" onClick="{{ compartilhar }}" style-hover="opacity: 0.85;">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; flex-shrink: 0; border-radius: 999px; border: 2px solid #ffc20e; color: #ffc20e;"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.35c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24z"></path></svg></span>
-            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Chame os amigos<br>e vamos juntos</p>
+            <p style="font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin: 10px 0 0; line-height: 1.35;">Chame os amigos<span class="quebra"> </span>e vamos juntos</p>
           </button>
         </div>
       </div>
@@ -489,10 +536,10 @@
 
     </div>
 
-    <div style="position: relative; z-index: 11; max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 28px 0 44px;">
-      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; text-transform: uppercase; padding: 15px 24px; border-radius: 8px;">Deputado Federal</span>
-      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; font-style: italic; text-transform: uppercase; padding: 15px 24px; border-radius: 8px;">Flávio Ferrari</span>
-      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; font-style: italic; text-transform: uppercase; padding: 15px 24px; border-radius: 8px;">O Faca na Bota</span>
+    <div class="votacao-chips" style="position: relative; z-index: 11; max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: stretch; gap: 14px; padding: 28px 0 44px;">
+      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; text-transform: uppercase; padding: 15px 24px; border-radius: 8px; display: flex; align-items: center;">Deputado Federal</span>
+      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; font-style: italic; text-transform: uppercase; padding: 15px 24px; border-radius: 8px; display: flex; align-items: center;">Flávio Ferrari</span>
+      <span style="background: #ffffff; color: #062a72; font-size: clamp(13px, 1.2vw, 17px); font-weight: 900; font-style: italic; text-transform: uppercase; padding: 15px 24px; border-radius: 8px; display: flex; align-items: center;">O Faca na Bota</span>
       <span style="background: #ffc20e; color: #062a72; font-size: clamp(20px, 2vw, 28px); font-weight: 900; font-style: italic; padding: 10px 28px; border-radius: 8px; display: flex; align-items: center;">4477</span>
     </div>
   </section>
